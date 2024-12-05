@@ -1,0 +1,12 @@
+<ion-grid
+  class="min-w-full">
+  <ion-row class="justify-center">
+    <ion-col
+      *ngFor="let property of this.cats"
+      class="w-full sm:max-w-[500px] md:max-w-[300px]
+            min-w-[300px] max-h-[400px] min-h-[300px]"
+    >
+      <app-card [cat]="property"></app-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
