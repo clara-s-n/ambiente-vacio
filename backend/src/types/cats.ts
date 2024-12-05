@@ -7,7 +7,7 @@ export const CatPostSchema = Type.Object({
 })
 
 export const CatsSchema = Type.Object({
-    cat_id: Type.Number(),
+    id: Type.Number(),
     raze: Type.String(),
     name: Type.String(),
     birthdate: Type.String(),

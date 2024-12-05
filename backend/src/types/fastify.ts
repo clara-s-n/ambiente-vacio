@@ -10,7 +10,7 @@ declare module "fastify" {
     interface FastifyInstance {
         authenticate: authenticateFunction,
         verifyAdmin: authenticateFunction,
-        verifySelfOrAdmin: authenticateFunction
+        verifySelfOrAdmin: authenticateFunction,
     }
 }
 
