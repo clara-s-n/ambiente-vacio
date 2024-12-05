@@ -5,6 +5,8 @@ import {NgForOf} from "@angular/common";
 import {CatsService} from "../../services/cats.service";
 import {Router} from "@angular/router";
 import {Cat} from "../../interfaces/cats";
+import {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle} from "@ionic/angular/standalone";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   standalone: true,
@@ -14,7 +16,8 @@ import {Cat} from "../../interfaces/cats";
   imports: [
     CardComponent,
     IonicModule,
-    NgForOf
+    NgForOf,
+    FormsModule,
   ]
 })
 export class CatsPage  implements OnInit {
@@ -23,6 +26,7 @@ export class CatsPage  implements OnInit {
   private router: Router = inject(Router);
   private allCats!: WritableSignal<Cat[]>;
   cats!: Cat[];
+  cat!: Cat;
 
   constructor() {
   }
@@ -34,4 +38,9 @@ export class CatsPage  implements OnInit {
       this.cats = this.allCats();
     }
   }
+
+  addCat(){
+    this.router.navigate(['/add-cat']);
+  }
+
 }

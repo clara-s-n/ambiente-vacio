@@ -32,7 +32,7 @@ export class CatsService {
     return this.catList;
   }
 
-  postCat(cat: Cat) {
+  addCat(cat: Cat) {
     try {
       fetch(`http://localhost/backend/cats`, {
         method: 'POST',
