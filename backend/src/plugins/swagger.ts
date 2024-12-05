@@ -18,6 +18,9 @@ const options : SwaggerOptions = {
         ],
         tags: [
 //            {name: 'auth', description: 'Auth description'},
+            {
+                name: 'cats', description: 'Cats description'
+            },
         ],
         components: {
             securitySchemes: {

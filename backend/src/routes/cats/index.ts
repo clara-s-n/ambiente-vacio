@@ -1,6 +1,7 @@
 import {FastifyInstance, FastifyPluginAsync, FastifyPluginOptions} from "fastify"
 import {query} from "../../services/database.js"
 import {CatPostSchema, CatPostType, CatsSchema} from "../../types/cats.js"
+import {sendToWebSocket} from "../../services/websocket.js";
 
 const cats: FastifyPluginAsync = async (
     fastify: FastifyInstance,
@@ -47,7 +48,13 @@ const cats: FastifyPluginAsync = async (
         handler: async function (request, reply) {
             const {raze, name, birthdate} = request.body as CatPostType;
             const res = await query(`INSERT INTO cats(raze, name, birthdate) VALUES($1, $2, $3) RETURNING *`, [raze, name, birthdate]);
-            return res.rows[0];
+            //return res.rows[0];
+
+            //Enviamos una señal al websocket
+            sendToWebSocket(0, {
+                type: "new-cat",
+                data: res.rows[0],
+            });
         }
     });
 }
